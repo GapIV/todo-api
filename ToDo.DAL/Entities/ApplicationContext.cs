@@ -4,9 +4,9 @@ namespace ToDo.DAL.Entities;
 
 public class ApplicationContext : DbContext
 {
-    DbSet<ToDo> ToDos { get; set; }
+    DbSet<ToDoEntity> ToDos { get; set; }
 
-    public ApplicationContext() {
+    public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) {
         Database.EnsureCreated();
     }
 
