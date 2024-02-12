@@ -2,11 +2,11 @@
 
 namespace ToDo.DAL.Entities;
 
-public class AppContext : DbContext
+public class ApplicationContext : DbContext
 {
     DbSet<ToDo> ToDos { get; set; }
 
-    public AppContext() {
+    public ApplicationContext() {
         Database.EnsureCreated();
     }
 
