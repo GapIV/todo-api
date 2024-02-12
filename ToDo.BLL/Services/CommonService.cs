@@ -1,36 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
 using ToDo.BLL.Interfaces;
+using ToDo.DAL.Interfaces;
 
 namespace ToDo.BLL.Services;
 
-public class CommonService<T> : ICommonService<T> where T : class
+public class CommonService<TEntity, TModel> : ICommonService<TModel> 
+    where TEntity : class 
+    where TModel : class
 {
-    public Task<T> Create(T item)
+    protected readonly IMapper _mapper;
+    protected readonly IRepository<TEntity> _repository;
+
+    public CommonService(IMapper mapper, IRepository<TEntity> repository) 
     {
-        throw new NotImplementedException();
+        _mapper = mapper;
+        _repository = repository;
     }
 
-    public Task Delete(Guid id)
+    public async Task<TModel> Create(TModel model)
     {
-        throw new NotImplementedException();
+        var entity = await _repository.Create(_mapper.Map<TEntity>(model));
+        return _mapper.Map<TModel>(entity);
     }
 
-    public Task<T> Get(Guid id)
+    public async Task Delete(Guid id)
     {
-        throw new NotImplementedException();
+        await _repository.Delete(id);
     }
 
-    public Task<T> GetAll()
+    public async Task<TModel> Get(Guid id)
     {
-        throw new NotImplementedException();
+        var entity = await _repository.Get(id);
+        return _mapper.Map<TModel>(entity);
     }
 
-    public Task<T> Update(T item)
+    public async Task<IEnumerable<TModel>> GetAll()
     {
-        throw new NotImplementedException();
+        return _mapper.Map<IEnumerable<TModel>>(await _repository.GetAll());
+        
+    }
+
+    public async Task<TModel> Update(TModel model)
+    {
+        var entity = await _repository.Update(_mapper.Map<TEntity>(model));
+        return _mapper.Map<TModel>(entity);
     }
 }
