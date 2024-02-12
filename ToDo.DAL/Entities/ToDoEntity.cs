@@ -1,6 +1,5 @@
-﻿using ToDo.DAL.Interfaces;
+﻿namespace ToDo.DAL.Entities;
 
-namespace ToDo.DAL.Entities;
 public class ToDoEntity : CommonEntity 
 {
     public string Title { get; set; }
