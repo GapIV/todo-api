@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ToDo.BLL\ToDo.BLL.csproj" />
+  </ItemGroup>
+
 </Project>
