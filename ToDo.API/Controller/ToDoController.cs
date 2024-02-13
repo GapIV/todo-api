@@ -1,0 +1,53 @@
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using ToDo.API.ViewModels;
+using ToDo.BLL.Interfaces;
+using ToDo.BLL.Models;
+
+namespace ToDo.API.Controller;
+
+[Route("api/[controller]")]
+[ApiController]
+public class ToDoController : ControllerBase
+{
+    private readonly ICommonService<ToDoModel> _service;
+    private readonly IMapper _mapper;
+
+    public ToDoController(ICommonService<ToDoModel> service, IMapper mapper)
+    {
+        _service = service;
+        _mapper = mapper;
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ToDoViewModel> Get(Guid id)
+    {
+         return _mapper.Map<ToDoViewModel>(await _service.Get(id));
+    }
+
+    [HttpGet]
+    public async Task<IEnumerable<ToDoViewModel>> GetAll()
+    {
+        return _mapper.Map<IEnumerable<ToDoViewModel>>(await _service.GetAll());
+    }
+
+    [HttpPost]
+    public async Task<ToDoViewModel> Post(ToDoViewModel viewModel)
+    {
+        var model = await _service.Create(_mapper.Map<ToDoModel>(viewModel));
+        return _mapper.Map<ToDoViewModel>(model);
+    }
+
+    [HttpPut]
+    public async Task<ToDoViewModel> Put(ToDoViewModel viewModel)
+    {
+        var model = await _service.Update(_mapper.Map<ToDoModel>(viewModel));
+        return _mapper.Map<ToDoViewModel>(model);
+    }
+
+    [HttpDelete]
+    public async Task Delete(Guid id)
+    {
+        await _service.Delete(id);
+    }
+}
