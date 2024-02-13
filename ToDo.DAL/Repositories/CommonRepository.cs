@@ -17,6 +17,7 @@ public class CommonRepository<T> : IRepository<T> where T : CommonEntity
 
     public async Task<T> Create(T entity)
     {
+        entity.Id = Guid.NewGuid();
         _set.Add(entity);
         await _context.SaveChangesAsync();
         return entity;
