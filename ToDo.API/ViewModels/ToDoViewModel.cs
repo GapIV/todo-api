@@ -6,4 +6,7 @@ public class ToDoViewModel
     public string Title { get; set; }
     public string? Body { get; set; }
     public bool Checked { get; set; }
+
+    public Guid UserViewModelID { get; set; }
+    public UserViewModel User { get; set; }
 }
