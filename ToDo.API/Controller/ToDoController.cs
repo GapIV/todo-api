@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 using ToDo.API.ViewModels;
 using ToDo.BLL.Interfaces;
@@ -12,11 +13,16 @@ public class ToDoController : ControllerBase
 {
     private readonly ICommonService<ToDoModel> _service;
     private readonly IMapper _mapper;
+    private readonly IValidator<ToDoViewModel> _validator;
 
-    public ToDoController(ICommonService<ToDoModel> service, IMapper mapper)
+    public ToDoController(
+        ICommonService<ToDoModel> service, 
+        IMapper mapper, 
+        IValidator<ToDoViewModel> validator)
     {
         _service = service;
         _mapper = mapper;
+        _validator = validator;
     }
 
     [HttpGet("{id}")]
@@ -34,6 +40,7 @@ public class ToDoController : ControllerBase
     [HttpPost]
     public async Task<ToDoViewModel> Post(ToDoViewModel viewModel)
     {
+        await _validator.ValidateAndThrowAsync(viewModel);
         var model = await _service.Create(_mapper.Map<ToDoModel>(viewModel));
         return _mapper.Map<ToDoViewModel>(model);
     }
@@ -41,6 +48,7 @@ public class ToDoController : ControllerBase
     [HttpPut]
     public async Task<ToDoViewModel> Put(ToDoViewModel viewModel)
     {
+        await _validator.ValidateAndThrowAsync(viewModel);
         var model = await _service.Update(_mapper.Map<ToDoModel>(viewModel));
         return _mapper.Map<ToDoViewModel>(model);
     }
