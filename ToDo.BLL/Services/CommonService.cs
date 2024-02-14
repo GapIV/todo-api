@@ -37,7 +37,6 @@ public class CommonService<TEntity, TModel> : ICommonService<TModel>
     public async Task<IEnumerable<TModel>> GetAll()
     {
         return _mapper.Map<IEnumerable<TModel>>(await _repository.GetAll());
-        
     }
 
     public async Task<TModel> Update(TModel model)
