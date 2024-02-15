@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using ToDo.BLL.Interfaces;
-using ToDo.DAL.Interfaces;
-
-namespace ToDo.BLL.Services;
+﻿namespace ToDo.BLL.Services;
 
 public class CommonService<TEntity, TModel> : ICommonService<TModel> 
     where TEntity : class 

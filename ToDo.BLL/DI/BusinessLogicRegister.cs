@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ToDo.BLL.Interfaces;
 using ToDo.BLL.Mapper;
-using ToDo.BLL.Models;
 using ToDo.BLL.Services;
 using ToDo.DAL.DI;
 
