@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace ToDo.DAL.Entities;
+﻿namespace ToDo.DAL.Entities;
 
 public class ApplicationContext : DbContext
 {

@@ -1,7 +1,4 @@
-﻿using FluentValidation;
-using ToDo.API.ViewModels;
-
-namespace ToDo.API.Validators;
+﻿namespace ToDo.API.Validators;
 
 public class UserValidator : AbstractValidator<UserViewModel>
 {

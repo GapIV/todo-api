@@ -1,8 +1,4 @@
-﻿using ToDo.DAL.Interfaces;
-using ToDo.DAL.Entities;
-using Microsoft.EntityFrameworkCore;
-
-namespace ToDo.DAL.Repositories;
+﻿namespace ToDo.DAL.Repositories;
 
 public class CommonRepository<T> : IRepository<T> where T : CommonEntity
 {
