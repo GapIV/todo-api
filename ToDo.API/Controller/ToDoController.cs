@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
-using ToDo.API.ViewModels;
-using ToDo.BLL.Interfaces;
-using ToDo.BLL.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace ToDo.API.Controller;
 
@@ -28,7 +23,7 @@ public class ToDoController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ToDoViewModel> Get(Guid id)
     {
-         return _mapper.Map<ToDoViewModel>(await _service.Get(id));
+        return _mapper.Map<ToDoViewModel>(await _service.Get(id));
     }
 
     [HttpGet]

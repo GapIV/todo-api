@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
-using ToDo.API.ViewModels;
-using ToDo.BLL.Interfaces;
-using ToDo.BLL.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace ToDo.API.Controller;
 

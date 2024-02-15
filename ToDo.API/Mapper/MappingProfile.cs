@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using ToDo.API.ViewModels;
-using ToDo.BLL.Models;
-
-namespace ToDo.API.Mapper;
+﻿namespace ToDo.API.Mapper;
 
 public class MappingProfile : Profile
 {

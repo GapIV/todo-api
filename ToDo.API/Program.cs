@@ -1,10 +1,6 @@
 ﻿using ToDo.BLL.DI;
 using ToDo.API.Mapper;
 using ToDo.API.Validators;
-using ToDo.API.ViewModels;
-using FluentValidation;
-using FluentValidation.AspNetCore;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder();
 
