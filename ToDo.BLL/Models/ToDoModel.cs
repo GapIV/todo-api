@@ -7,6 +7,6 @@ public class ToDoModel
     public string? Body { get; set; }
     public bool Checked { get; set; }
 
-    public Guid UserModelId { get; set; }
-    public UserModel User { get; set; }
+    public Guid UserId { get; set; }
+    public UserModel? User { get; set; }
 }
