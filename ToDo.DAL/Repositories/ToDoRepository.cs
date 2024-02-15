@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ToDo.DAL.Entities;
-
-namespace ToDo.DAL.Repositories;
+﻿namespace ToDo.DAL.Repositories;
 
 public class ToDoRepository : CommonRepository<ToDoEntity>
 {

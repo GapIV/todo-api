@@ -1,9 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ToDo.DAL.Entities;
-using ToDo.DAL.Interfaces;
-using ToDo.DAL.Repositories;
 
 namespace ToDo.DAL.DI;
 
