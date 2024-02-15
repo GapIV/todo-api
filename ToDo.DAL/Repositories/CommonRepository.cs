@@ -36,12 +36,12 @@ public class CommonRepository<T> : IRepository<T> where T : CommonEntity
         await _context.SaveChangesAsync();
     }
 
-    public async Task<T> Get(Guid id)
+    public virtual async Task<T> Get(Guid id)
     {
         return await _set.FirstAsync(entity => entity.Id == id);
     }
 
-    public async Task<IEnumerable<T>> GetAll()
+    public virtual async Task<IEnumerable<T>> GetAll()
     {
         return await _set.ToListAsync();
     }

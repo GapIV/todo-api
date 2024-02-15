@@ -10,7 +10,11 @@ var builder = WebApplication.CreateBuilder();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddScoped<IValidator<ToDoViewModel>, ToDoValidator>();
-builder.Services.AddControllers();
+builder.Services.AddScoped<IValidator<UserViewModel>, UserValidator>();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+    );
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

@@ -14,6 +14,7 @@ public static class BusinessLogicRegister
     {
         services.AddAutoMapper(typeof(MappingProfile));
         services.AddScoped<ICommonService<ToDoModel>, ToDoService>();
+        services.AddScoped<ICommonService<UserModel>, UserService>();
         DataAccessRegister.AddDataAccess(services, config);
     }
 }
